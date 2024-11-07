@@ -1,10 +1,21 @@
 ﻿<Window x:Class="NASApp.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Login" Height="200" Width="300">
-    <StackPanel Margin="10">
-        <TextBlock Text="Token:"/>
-        <TextBox x:Name="TokenTextBox" Width="200" Margin="5"/>
-        <Button Content="Vstoupit" Click="Login_Click" Width="200" Margin="5"/>
+        Title="Login" Height="200" Width="300" Background="#E6F2FF">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#003366"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="#003366"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </Window.Resources>
+    <StackPanel Margin="20">
+        <TextBlock Text="Token:" Margin="5" Foreground="#003366" FontWeight="Bold"/>
+        <TextBox x:Name="TokenTextBox" Width="200" Margin="5" Padding="5"/>
+        <Button Content="Vstoupit" Click="Login_Click" Width="200"/>
     </StackPanel>
 </Window>

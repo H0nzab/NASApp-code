@@ -1,27 +1,36 @@
-﻿<Window x:Class="MyApp.MainWindow"
+﻿<Window x:Class="NASApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Asteroid NeoWs" Height="450" Width="800">
-    <Grid>
+        Title="Asteroid NeoWs" Height="450" Width="800" Background="#E6F2FF">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#003366"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="#003366"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="20">
         <StackPanel>
             <Button x:Name="ScanButton" Content="Sken" Click="ScanButton_Click" Width="100" Height="30" Margin="10"/>
-            <TextBlock x:Name="CooldownTextBlock" Text="Zbývající čas do dalšího skenu: 0 minut" Margin="10"/>
+            <TextBlock x:Name="CooldownTextBlock" Text="Zbývající čas do dalšího skenu: 0 minut" Margin="10" Foreground="#003366" FontWeight="Bold"/>
             <ScrollViewer>
                 <ListView x:Name="AsteroidListView" SelectionChanged="AsteroidListView_SelectionChanged">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding name}" Width="200" Margin="5"/>
-                                <TextBlock Text="{Binding estimated_diameter.kilometers.estimated_diameter_max}" Width="150" Margin="5"/>
-                                <TextBlock Text="{Binding is_potentially_hazardous_asteroid}" 
-                                           Background="{Binding Converter={StaticResource HazardousToBrushConverter}, ConverterParameter={Binding estimated_diameter.kilometers.estimated_diameter_max}}"
-                                           Width="100" Margin="5" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding name}" Width="200" Margin="5" Foreground="#003366"/>
+                                <TextBlock Text="{Binding estimated_diameter.kilometers.estimated_diameter_max}" Width="150" Margin="5" Foreground="#003366"/>
+                                <TextBlock Text="{Binding is_potentially_hazardous_asteroid}" Width="100" Margin="5" TextAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollViewer>
-            <TextBlock x:Name="DetailTextBlock" Text="" Margin="10"/>
+            <TextBlock x:Name="DetailTextBlock" Text="" Margin="10" Foreground="#003366"/>
         </StackPanel>
     </Grid>
 </Window>

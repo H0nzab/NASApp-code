@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace MyApp
+namespace NASApp
 {
     public partial class MainWindow : Window
     {
