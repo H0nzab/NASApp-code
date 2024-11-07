@@ -1,0 +1,10 @@
+﻿<Window x:Class="NASApp.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Login" Height="200" Width="300">
+    <StackPanel Margin="10">
+        <TextBlock Text="Token:"/>
+        <TextBox x:Name="TokenTextBox" Width="200" Margin="5"/>
+        <Button Content="Vstoupit" Click="Login_Click" Width="200" Margin="5"/>
+    </StackPanel>
+</Window>
