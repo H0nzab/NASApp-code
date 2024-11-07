@@ -1,7 +1,7 @@
 ﻿<Window x:Class="NASApp.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Login" Height="200" Width="300" Background="#E6F2FF">
+        Title="Login" Height="250" Width="350" Background="#E6F2FF">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="5"/>
@@ -14,8 +14,9 @@
         </Style>
     </Window.Resources>
     <StackPanel Margin="20">
-        <TextBlock Text="Token:" Margin="5" Foreground="#003366" FontWeight="Bold"/>
-        <TextBox x:Name="TokenTextBox" Width="200" Margin="5" Padding="5"/>
-        <Button Content="Vstoupit" Click="Login_Click" Width="200"/>
+        <TextBlock Text="Zadejte NASA API token:" Margin="5" Foreground="#003366" FontWeight="Bold"/>
+        <TextBox x:Name="TokenTextBox" Width="250" Margin="5" Padding="5"/>
+        <TextBlock Text="Chcete-li získat NASA API token, zašlete žádost na následující webovou stránku. Tento proces může trvat 5-10 minut." Margin="5" Foreground="#003366" TextWrapping="Wrap"/>
+        <Button Content="Vstoupit" Click="Login_Click" Width="250"/>
     </StackPanel>
 </Window>

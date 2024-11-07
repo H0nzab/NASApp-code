@@ -41,6 +41,10 @@ namespace NASApp
             var httpClient = new HttpClient();
             var response = await httpClient.GetStringAsync("https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY");
             var asteroidData = JsonConvert.DeserializeObject<NeoWsResponse>(response);
+            for (int i = 0; i < asteroidData.near_earth_objects.Count; i++)
+            {
+                asteroidData.near_earth_objects[i].ListViewIndex = i + 1;
+            }
             AsteroidListView.ItemsSource = asteroidData.near_earth_objects;
         }
 
@@ -71,10 +75,18 @@ namespace NASApp
             var selectedAsteroid = (NearEarthObject)AsteroidListView.SelectedItem;
             if (selectedAsteroid != null)
             {
-                DetailTextBlock.Text = $"Název: {selectedAsteroid.name}\n" +
-                                       $"Průměr (km): {selectedAsteroid.estimated_diameter.kilometers.estimated_diameter_max}\n" +
-                                       $"Nebezpečný: {selectedAsteroid.is_potentially_hazardous_asteroid}\n" +
-                                       $"Odkaz na databázi NASA: [Link](https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr={selectedAsteroid.name})";
+                // Aktualizace textového pole s podrobnostmi
+                // Odkaz je zobrazen a může být zkopírován tlačítkem
+            }
+        }
+
+        private void CopyLink_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null && button.Tag != null)
+            {
+                Clipboard.SetText(button.Tag.ToString());
+                MessageBox.Show("Odkaz byl zkopírován do schránky.");
             }
         }
     }
@@ -86,9 +98,11 @@ namespace NASApp
 
     public class NearEarthObject
     {
+        public int ListViewIndex { get; set; }
         public string name { get; set; }
         public bool is_potentially_hazardous_asteroid { get; set; }
         public EstimatedDiameter estimated_diameter { get; set; }
+        public string nasa_jpl_url { get; set; }
     }
 
     public class EstimatedDiameter
